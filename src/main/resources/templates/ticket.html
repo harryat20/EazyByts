@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Ticketing System</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{/css/homestyle.css}">
+    <style>
+        /* Main container */
+        main {
+            padding: 20px;
+            max-width: 1000px;
+            margin: left;
+        }
+
+        /* Form styling */
+        .formm {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        form input,
+        form textarea,
+        form button {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+        }
+
+        table th,
+        table td {
+            padding: 12px 15px;
+        }
+
+        table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Navbar form styling */
+        nav form {
+            display: flex;
+            align-items: center;
+        }
+
+        */ .form-input {
+               display: flex;
+               flex-grow: 1;
+               margin-right: 10px;
+           }
+
+        .form-input input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-input button {
+            padding: 10px;
+            border: none;
+            background-color: #009879;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-input button:hover {
+            background-color: #007f65;
+        }
+    </style>
+</head>
+
+<body>
+<!-- SIDEBAR -->
+<section id="sidebar">
+    <a href="#" class="brand">
+        <span class="text">CRM</span>
+    </a>
+    <ul class="side-menu top">
+        <li><a th:href="@{home.html}"><i class='bx bxs-dashboard'></i><span class="text">Dashboard</span></a></li>
+        <li><a th:href="@{task.html}"><i class='bx bxs-shopping-bag-alt'></i><span class="text">Tasks</span></a></li>
+        <!-- <li><a href="analytics.html"><i class='bx bxs-doughnut-chart'></i><span class="text">Analytics</span></a> -->
+        </li>
+        <li class="active"><a href=""><i class='bx bxs-message-dots'></i><span
+                class="text">Support</span></a></li>
+        <li><a th:href="@{team.html}"><i class='bx bxs-group'></i><span class="text">Teams</span></a></li>
+    </ul>
+    <ul class="side-menu">
+        <li><a href="#"><i class='bx bxs-cog'></i><span class="text">Settings</span></a></li>
+        <li><a th:href="@{login.html}" class="logout"><i class='bx bxs-log-out-circle'></i><span
+                class="text">Logout</span></a></li>
+    </ul>
+</section>
+<!-- SIDEBAR -->
+
+<!-- CONTENT -->
+<section id="content">
+    <!-- NAVBAR -->
+    <nav>
+        <i class='bx bx-menu'></i>
+        <form action="#">
+            <div class="form-input">
+                <input type="search" placeholder="Search...">
+                <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+            </div>
+        </form>
+        <a href="#" class="notification">
+            <i class='bx bxs-bell'></i>
+            <span class="num">2</span>
+        </a>
+        <a href="#" class="profile"></a>
+    </nav>
+    <!-- NAVBAR -->
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <h1>Support Ticket Submission</h1>
+        <form id="ticketForm" class="formm">
+            <input type="text" id="ticketTitle" placeholder="Ticket Title" required>
+            <textarea id="ticketDescription" placeholder="Ticket Description" required></textarea>
+            <button type="submit">Submit Ticket</button>
+        </form>
+
+        <h1>Existing Tickets</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Ticket ID</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Date Submitted</th>
+            </tr>
+            </thead>
+            <tbody id="ticketList">
+            <tr>
+                <td>1</td>
+                <td>Login Issue</td>
+                <td>Open</td>
+                <td>2024-07-10</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Bug in Dashboard</td>
+                <td>Closed</td>
+                <td>2024-07-09</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Feature Request</td>
+                <td>In Progress</td>
+                <td>2024-07-08</td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+</section>
+<!-- CONTENT -->
+
+<script>
+    let ticketIdCounter = 4; // Starting ticket ID for new tickets
+
+    document.getElementById('ticketForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent page reload
+
+        // Get values from the form
+        const title = document.getElementById('ticketTitle').value;
+        const status = 'Open'; // Default status for new tickets
+        const dateSubmitted = new Date().toISOString().split('T')[0]; // Current date in YYYY-MM-DD format
+
+        // Create a new table row
+        const ticketRow = document.createElement('tr');
+        ticketRow.innerHTML = `
+                <td>${ticketIdCounter++}</td>
+                <td>${title}</td>
+                <td>${status}</td>
+                <td>${dateSubmitted}</td>
+            `;
+
+        // Append the new ticket row to the ticket list
+        document.getElementById('ticketList').appendChild(ticketRow);
+
+        // Clear the form fields
+        document.getElementById('ticketForm').reset();
+    });
+</script>
+
+</body>
+
+</html>
