@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Trading Simulation - Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <h1>My Portfolio</h1>
+    <nav>
+        <ul>
+            <li><a href="/pages/home">Home</a></li>
+            <li><a href="/pages/portfolio">My Portfolio</a></li>
+            <li><a href="/pages/stock-list">Stock List</a></li>
+            <li><a href="/pages/trading">Trading</a></li>
+            <li><a href="/pages/transactions">Transaction History</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h2>Stocks in My Portfolio</h2>
+    <div id="portfolio"></div>
+    <script src="/js/api.js"></script>
+    <script>
+        fetchPortfolio();
+    </script>
+</main>
+</body>
+</html>
