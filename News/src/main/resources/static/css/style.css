@@ -1,0 +1,115 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f06, #4a90e2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container Styling */
+.container {
+    width: 80%;
+    max-width: 800px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Home Page Heading */
+.news-heading {
+    text-align: center;
+    font-size: 36px; /* Increased font size for emphasis */
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Subheading */
+.latest-news-heading {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #555;
+    font-size: 24px; /* Slightly smaller font for this heading */
+}
+
+/* News List Styling */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.news-list {
+    list-style: none;
+    padding: 0;
+}
+
+.news-list li {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.news-list li:hover {
+    transform: translateY(-5px);
+}
+
+.news-list li h3 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.news-list li p {
+    margin: 0 0 10px;
+    color: #666;
+}
+
+.news-list li a {
+    color: #4a90e2;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.news-list li a:hover {
+    color: #357ab8;
+}
+
+/* Back Button Styling */
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #4a90e2;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+    background-color: #357ab8;
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

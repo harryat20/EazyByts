@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="news-heading">NEWS</h1>
+    <h2 class="latest-news-heading">Latest News Articles</h2>
+    <ul class="news-list">
+        <li th:each="newsItem : ${newsItems}">
+            <h3 th:text="${newsItem.title}">News Title</h3>
+            <p th:text="${newsItem.description}">Description</p>
+            <a th:href="${newsItem.link}" target="_blank">Read more</a>
+        </li>
+    </ul>
+    <a href="/home" class="back-button">Go Back</a>
+</div>
+</body>
+</html>
